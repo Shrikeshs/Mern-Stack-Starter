@@ -17,9 +17,11 @@ const connection = mongoose.connection;
 connection.once('open', ()=> {
     console.log("Mongo Db databse connection is established")
 });
+const userRouter = require('./routes/users');
+const exercisesRouter =  require('./routes/exercises');
 
-
-
+app.use('/exercises', exercisesRouter);
+app.use('/users', userRouter);
 app.listen(port, (req,res)=> {
     console.log(`Server is listening at port ${port}`)
 })
